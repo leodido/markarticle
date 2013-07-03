@@ -204,6 +204,16 @@ We compile the R Markdown file to Markdown through **knitr** [@xie2013] in R [@r
 
 Dai su!
 
+\appendix
+
+```{r appendix-a, child="appendix-a.Rmd", eval=TRUE}
+
+```
+
+```{r appendix-b, child="appendix-b.Rmd", eval=TRUE}
+
+```
+
 \phantomsection
 \pdfbookmark{\refname}{\bibname}
 \section*{\bibname}

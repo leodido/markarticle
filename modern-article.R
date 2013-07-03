@@ -2,6 +2,8 @@ library(knitr)
 # this feature comes in v1.2
 stopifnot(packageVersion('knitr') > '1.1')
 
+opts_knit$set(child.command = 'include')
+
 knit('modern-article.Rmd')
 pandoc('modern-article.md', format = 'latex')
 

@@ -1,0 +1,13 @@
+```{r set-parent-a, echo=FALSE, cache=FALSE}
+set_parent("modern-article.Rmd")
+```
+
+# Appendice A
+
+Ciao!
+
+This is an appendix chapter.
+
+## And this is its first subsection
+
+\lipsum

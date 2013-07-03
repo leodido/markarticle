@@ -206,11 +206,11 @@ Dai su!
 
 \appendix
 
-```{r appendix-a, child="appendix-a.Rmd", eval=TRUE}
+```{r appendix-a, child="backmatter/appendix-a.Rmd", eval=TRUE}
 
 ```
 
-```{r appendix-b, child="appendix-b.Rmd", eval=TRUE}
+```{r appendix-b, child="backmatter/appendix-b.Rmd", eval=TRUE}
 
 ```
 

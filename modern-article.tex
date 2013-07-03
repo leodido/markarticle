@@ -1,0 +1,278 @@
+%*********************************************************************************
+% Class
+%*********************************************************************************
+\documentclass[$fontsize$,a4paper,oneside]{article}
+
+%*********************************************************************************
+% Packages
+%*********************************************************************************
+\usepackage[T1]{fontenc}
+$if(fontmodern)$
+\usepackage{lmodern}   
+$endif$     
+\usepackage{ifxetex,ifluatex}          
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+  $if(euro)$
+  \usepackage{eurosym}
+  $endif$
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+  $if(mainfont)$
+  \setmainfont{$mainfont$}
+  $endif$
+  $if(sansfont)$
+  \setsansfont{$sansfont$}
+  $endif$
+  $if(monofont)$
+  \setmonofont{$monofont$}
+  $endif$
+  $if(mathfont)$
+  \setmathfont{$mathfont$}
+  $endif$
+\fi 
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}              
+$if(lang)$
+\ifxetex
+  \usepackage{polyglossia}
+  \setmainlanguage{$mainlang$}
+\else
+  \usepackage[english,$lang$]{babel}
+  $if(csquotes)$\usepackage[babel,$lang$=guillemets]{csquotes}$endif$
+\fi
+$endif$
+\usepackage[binding=5mm]{layaureo}          
+\usepackage{indentfirst}                            
+$if(tables)$
+\usepackage{booktabs}
+\usepackage{longtable}
+$endif$  
+$if(graphics)$                     
+\usepackage{graphicx}  
+$endif$                    
+\usepackage{subfig}                         
+\usepackage{caption}
+$if(listings)$                       
+\usepackage{listings}
+$endif$                     
+\usepackage[font=small]{quoting}            
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{framed}           
+\usepackage{mparhack,fixltx2e,relsize}    
+\usepackage[style=philosophy-modern,hyperref,backref,square,natbib]{biblatex}
+\bibliography{bibliography}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{lipsum}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\usepackage[$lang$]{varioref}
+\usepackage{cleveref}
+\usepackage{bookmark}                       
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+%*********************************************************************************
+% Settings
+%*********************************************************************************
+
+%*********************************************************************************
+% Info commands
+%*********************************************************************************
+\newcommand{\myName}{$for(author)$$author$$sep$ \and $endfor$}                                           
+\newcommand{\myTitle}{$title$}     
+\newcommand{\mySubject}{$subject$}                                      
+\newcommand{\myKeywords}{$for(keyword)$$keyword$$sep$, $endfor$}        
+\date{$date$}                                                                  
+\title{\myTitle}
+\author{\myName}
+
+%*********************************************************************************
+% Listings settings
+%*********************************************************************************
+$if(listings)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+%*********************************************************************************
+% Color settings
+%*********************************************************************************
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+%*********************************************************************************
+% References settings
+%*********************************************************************************
+\hypersetup{%
+    %draft,	% = elimina tutti i link (utile per stampe in bianco e nero)
+    colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,%
+    % decommenta la riga seguente per avere link in nero (per esempio per la stampa in bianco e nero)
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ $for(author)$$author$$sep$, $endfor$},%
+    pdfsubject={\mySubject},%
+    pdfkeywords={\myKeywords},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref, classicthesis and arsclassica}%
+}
+
+%*********************************************************************************
+% Other links
+%*********************************************************************************
+\urlstyle{same}
+$if(links-as-notes)$
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+
+%*********************************************************************************
+% Image settings
+%*********************************************************************************
+$if(graphics)$
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+\else\Gin@nat@width\fi}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+
+\graphicspath{{images/}}
+$endif$
+
+%*********************************************************************************
+% Captions settings
+%*********************************************************************************
+\captionsetup{tableposition=top,figureposition=bottom,font=small,format=hang,labelfont=bf}
+
+%*********************************************************************************
+% Numbered sections
+%*********************************************************************************
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+
+%*********************************************************************************
+% Hyphenation algorithm execptions
+%*********************************************************************************
+\hyphenation{}
+
+%*********************************************************************************
+% Setting amsmath, amssymb, amsthm - CUSTOMIZABLE
+%*********************************************************************************
+
+% Numeric sets (amssymb package needed)
+\newcommand{\numberset}{\mathbb}
+\newcommand{\N}{\numberset{N}}
+\newcommand{\R}{\numberset{R}}
+
+% Systems environments
+\newenvironment{sistema}%
+  {\left\lbrace\begin{array}{@{}l@{}}}%
+  {\end{array}\right.}
+
+% Definitions environments (amsthm package needed)
+\theoremstyle{definition}
+\newtheorem{definizione}{Definizione}
+
+% Theorems environments (amsthm package needed)
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}
+\newtheorem{legge}{Legge}
+\newtheorem{decreto}[legge]{Decreto}
+\newtheorem{murphy}{Murphy}[section]
+
+%*********************************************************************************
+% Custom commands - CUSTOMIZABLE
+%*********************************************************************************
+
+% Command for common conventions and symbols
+\newcommand{\etc}{etc.~etc.}
+\newcommand{\omissis}{[\dots\negthinspace]}
+\newcommand{\ie}{i.\,e.}
+\newcommand{\Ie}{I.\,e.}
+\newcommand{\eg}{e.\,g.}
+\newcommand{\Eg}{E.\,g.}
+\newcommand{\doublequotes}[1]{``#1''}
+\newcommand{\citquotes}[1]{«#1»}
+
+% User defined custom commands
+% Define here your custom commands
+
+%*********************************************************************************
+% Document
+%*********************************************************************************
+\begin{document}
+\pagestyle{headings}
+%*******************************************************
+% Frontispiece
+%*******************************************************
+\maketitle
+%*******************************************************
+% TOC
+%*******************************************************
+$if(toc)$
+\pdfbookmark{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+\markboth{\contentsname}{\contentsname} 
+$endif$
+%*******************************************************
+% List of figures
+%*******************************************************   
+$if(list-of-figures)$ 
+\phantomsection
+\pdfbookmark{\listfigurename}{lof}
+\listoffigures
+$endif$
+%*******************************************************
+% List of tables
+%*******************************************************
+$if(list-of-tables)$
+\phantomsection
+\pdfbookmark{\listtablename}{lot}
+\listoftables
+$endif$
+
+%******************************************************************
+% Article
+%******************************************************************
+\cleardoublepage
+\bookmark[page=1,level=0]{Articolo}
+$body$
+%*******************************************************
+% Bibliography
+%*******************************************************
+\printbibliography
+\end{document}
+
+
+

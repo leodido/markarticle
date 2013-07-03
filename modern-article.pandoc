@@ -1,0 +1,30 @@
+variable fontsize: 11pt
+variable fontmodern:
+variable lang: italian
+variable title: "Guida all'estrazione di dati dai \emph{social network}"
+variable author: "Di~Donato Leonardo"
+variable subject: "Social Network Mining"
+variable keyword: "Big Data"
+  "Data Mining"
+  "API"
+  "Scraping"
+  "Social Networks"
+  "SNM"
+  "Social Network Mining"
+variable date: "01.07.2013"
+variable list-of-figures:
+variable list-of-tables:
+variable links-as-notes:
+variable graphics:
+variable listings:
+variable tables:
+
+format: latex
+latex-engine: pdflatex
+bibliography: modern-article.bib
+standalone:
+toc:
+toc-depth: 2
+number-sections:
+template: modern-article.tex
+output: modern-article.pdf

@@ -1,0 +1,209 @@
+A bit _introduction_ here.
+
+# Start with a cool section
+
+You can use traditional **Markdown** syntax, such as [links](http://yihui.name/knitr) and `code`.
+
+# Followed by another section
+
+Of course you can write lists:
+
+- apple
+- pear
+- banana
+
+Or ordered lists:
+
+1. items
+1. will
+1. be
+1. ordered
+    - nested
+    - items
+
+# More sections
+
+## Hi
+
+Hi, try to find me on <http://www.github.com>, luke!
+
+## Hello quotes
+
+hello hello, try \doublequotes{to double quote me}, with italic also works?
+
+Suspence \omissis{} *\doublequotes{yes you can!}*.
+
+But I can \citquotes{cite} someone? Sure you can!
+
+Consider that the quotes in `.md` are trivial to do: simply type, "try it yourself", and 'again' if you do not trust!
+
+Note that if you udefine the `csquotes` variabile in the `.pandoc` configuration file, the \citquotes{citation quotes} will be the default ones.
+
+However you can type what quotes you want with \LaTeX ! ;)
+
+Now is time for imagination. See section \ref{sec:pictures} (only `hyperref` works).
+
+## How to define, theorize something?
+
+\begin{definizione}[The surprise]This is a surprise!\end{definizione}
+
+So we can say:
+\begin{teorema}[The end of the world]MarkDown, Knitr, \LaTeX, and Pandoc are the end of the world. A new world is coming!\end{teorema}
+
+# Okay, some R code
+
+```{r linear-model}
+fit = lm(dist ~ speed, data = cars)
+b = coef(fit)  # coefficients
+summary(fit)
+```
+
+The code will be highlighted in all output formats.
+
+# And some pictures
+\label{sec:pictures}
+```{r lm-vis, fig.cap='Regression diagnostics'}
+par(mfrow = c(2, 2), pch = 20, mar = c(4, 4, 2, .1), bg = 'white')
+plot(fit)
+```
+
+But I have a old image that i want to load! Sure you can do, with \LaTeX directly into MarkDown!
+
+\begin{figure}
+\includegraphics{gallery}
+\caption[A gallery]{\label{fig:gallery}A long caption for my gallery image.}
+\end{figure}
+
+Reference the \cref{fig:gallery}, \vref{fig:gallery}, immagine \ref{fig:gallery}.
+
+And if I only want to use MarkDown?
+
+![Another gallery\label{fig:lorem}](lorem)
+
+Wonderful! It detects also the `images` folder that have ben set to be the _home_ of the images!
+
+I can also references the previous `.md` image: \cref{fig:lorem}, \vref{fig:lorem}, \ref{fig:lorem}.
+
+
+```{r example-plot, fig.cap = "A simple example plot\\label{fig:example-plot}"}
+plot(1:10, 1:10)
+```
+
+Prova \cref{fig:example-plot}, \vref{fig:example-plot}, \ref{fig:example-plot}
+
+```{r test-plot}
+plot(1)         # high-level plot
+abline(0, 1)    # low-level change
+plot(rnorm(10)) # high-level plot
+## many low-level changes in a loop (a single R expression)
+for(i in 1:10) {
+    abline(v = i, lty = 2)
+}
+```
+
+Prova \ref{test-plot}
+
+Prova \ref{fig:test-plot}
+
+# A little bit math
+
+Our regression equation is $Y=`r b[1]`+`r b[2]`x$, and the model is:
+
+$$ Y = \beta_0 + \beta_1 x + \epsilon $$
+
+# References
+
+## Hyperref ?
+
+## Vref ?
+
+## Cref ?
+
+# Pandoc extension: definition lists
+
+Programmer
+:   A programmer is the one who turns coffee into code.
+LaTeX
+:   A simple tool which is nothing but a couple of backslashes.
+
+# Pandoc extension: examples
+
+We have some examples.
+
+(@) Think what is `0.3 + 0.4 - 0.7`. Zero. Easy.
+(@weird) Now think what is `0.3 - 0.7 + 0.4`. Still zero?
+
+People are often surprised by (@weird).
+
+# Pandoc extension: tables
+
+A table here.
+
+Table:  Demonstration of simple table syntax.
+
+  Right     Left     Center     Default
+-------     ------ ----------   -------
+     12     12        12            12
+    123     123       123          123
+      1     1          1             1
+
+## Tables with `xtable`
+
+A table generated with `xtable` package.
+
+```{r example_table, echo=FALSE, results="asis"}
+library(xtable)
+suppressPackageStartupMessages(library(rattle))
+set.seed(42)
+obs <- sample(1:nrow(weatherAUS), 20)
+vars <- 2:5
+print(xtable(weatherAUS[obs, vars]), comment = FALSE)
+```
+
+## Tables with `kable`
+
+### Simple `kable`
+
+```{r, echo=FALSE, results="asis"}
+kable(head(iris), format = "latex")
+```
+
+### With `booktabs` package
+
+With `booktabs` option \omissis{}
+
+```{r, echo=FALSE, results="asis"}
+kable(head(mtcars[1:8]), format = "latex", booktabs = TRUE)
+```
+
+\omissis{} or without it!
+
+```{r, echo=FALSE, results="asis"}
+kable(head(mtcars[1:8]), format = "latex", booktabs = FALSE)
+```
+
+### With `longtables` package
+
+```{r, longtablet, echo=FALSE, results="asis"}
+kable(matrix(1000, ncol = 5), format = "latex", digits = 2, longtable = TRUE)
+```
+
+Prova riferimento a <longtablet>.
+
+# Pandoc extension: footnotes
+
+We can also write footnotes[^1].
+
+[^1]: hi, I'm a footnote
+
+Or write some inline footnotes^[as you can see here].
+
+# Pandoc extension: citations
+
+We compile the R Markdown file to Markdown through **knitr** [@xie2013] in R [@rbase]. For more about @xie2013, see <http://yihui.name/knitr>.
+
+Dai su!
+
+\phantomsection
+\pdfbookmark{\refname}{\bibname}
+\section*{\bibname}

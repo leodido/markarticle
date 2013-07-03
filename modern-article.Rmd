@@ -1,4 +1,13 @@
-A bit _introduction_ here.
+```{r summary, child="frontmatter/summary.Rmd", eval=TRUE}
+
+```
+
+```{r abstract, child="frontmatter/abstract.Rmd", eval=TRUE}
+
+```
+
+\cleardoublepage
+\bookmark[page=1,level=0]{Articolo}
 
 # Start with a cool section
 

@@ -1,0 +1,9 @@
+```{r set-parent-summary, echo=FALSE, cache=FALSE}
+set_parent("modern-article.Rmd")
+```
+
+\phantomsection
+\pdfbookmark{Summary}{Summary}
+\section*{Summary}
+
+\lipsum[1]

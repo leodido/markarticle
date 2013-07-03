@@ -1,0 +1,8 @@
+```{r set-parent-abstract, echo=FALSE, cache=FALSE}
+set_parent("modern-article.Rmd")
+```
+
+\pdfbookmark{Abstract}{Abstract}
+\section*{Abstract}
+
+\lipsum[2]

@@ -100,7 +100,7 @@ plot(1:10, 1:10)
 
 Prova \cref{fig:example-plot}, \vref{fig:example-plot}, \ref{fig:example-plot}
 
-```{r test-plot}
+```{r test-plot, fig.cap="Test plot caption\\label{fig:test-plot}"}
 plot(1)         # high-level plot
 abline(0, 1)    # low-level change
 plot(rnorm(10)) # high-level plot
@@ -110,23 +110,15 @@ for(i in 1:10) {
 }
 ```
 
-Prova \ref{test-plot}
-
-Prova \ref{fig:test-plot}
+Salutate la \cref{fig:test-plot}.
 
 # A little bit math
 
 Our regression equation is $Y=`r b[1]`+`r b[2]`x$, and the model is:
 
-$$ Y = \beta_0 + \beta_1 x + \epsilon $$
+$$\label{eq:regr-model} Y = \beta_0 + \beta_1 x + \epsilon $$
 
-# References
-
-## Hyperref ?
-
-## Vref ?
-
-## Cref ?
+Do you like equation \ref{eq:regr-model}?
 
 # Pandoc extension: definition lists
 

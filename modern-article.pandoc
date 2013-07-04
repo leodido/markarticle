@@ -22,9 +22,10 @@ variable tables:
 format: latex
 latex-engine: pdflatex
 bibliography: modern-article.bib
-standalone:
 toc:
 toc-depth: 2
 number-sections:
 template: modern-article.tex
 output: modern-article.pdf
+highlight-style:tango
+smart:

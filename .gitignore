@@ -4,4 +4,5 @@
 # files
 *.pdf
 *.md
+!README.md
 *~

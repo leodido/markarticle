@@ -211,10 +211,6 @@ Dai su!
 
 ```
 
-```{r appendix-b, child="backmatter/appendix-b.Rmd", eval=TRUE}
-
-```
-
 \phantomsection
 \pdfbookmark{\refname}{\bibname}
 \section*{\bibname}

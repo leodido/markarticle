@@ -21,11 +21,11 @@ variable tables:
 
 format: latex
 latex-engine: pdflatex
-bibliography: modern-article.bib
+bibliography: article.bib
 toc:
 toc-depth: 2
 number-sections:
-template: modern-article.tex
-output: modern-article.pdf
+template: templates/modern-article.tex
+output: article.pdf
 highlight-style:tango
 smart:

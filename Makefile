@@ -1,5 +1,5 @@
 knit:	
-	Rscript modern-article.R
+	Rscript article.R
 
 clean:	
 	$(RM) *~ *.log *.aux *.toc *.docx *.epub *.odt *.html; find figure/ | grep -E 'figure/[a-zA-Z]' | xargs $(RM);

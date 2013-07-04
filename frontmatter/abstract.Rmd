@@ -1,5 +1,5 @@
 ```{r set-parent-abstract, echo=FALSE, cache=FALSE}
-set_parent("modern-article.Rmd")
+set_parent("article.Rmd")
 ```
 
 \pdfbookmark{Abstract}{Abstract}

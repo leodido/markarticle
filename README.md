@@ -44,4 +44,4 @@ Building article
 
 To build your paper digit `make knit` in shell.
 
-Aldo a `make clean` and a `make deepclean` are provided.
+Also a `make clean` and a `make deepclean` are provided.

@@ -1,4 +1,4 @@
-Markarticle
+Markarticle [![Analytics](https://ga-beacon.appspot.com/UA-49657176-1/markarticle)](https://github.com/igrigorik/ga-beacon)
 ===========
 
 A **Mark**down **article**.
